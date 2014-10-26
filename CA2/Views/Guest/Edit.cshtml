@@ -1,0 +1,39 @@
+﻿@model CA2.Models.Guest
+
+@{
+    ViewBag.Title = "Edit";
+}
+<div class="container-fluid">
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Guest</legend>
+
+        @Html.HiddenFor(model => model.GuestId)
+
+        <div class="row-fluid">
+            <div class="span2">
+                @Html.LabelFor(model => model.Name)
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+            <div class="span2 offset2">
+                @Html.LabelFor(model => model.LegId, "Leg")
+                @Html.DropDownList("LegId", String.Empty)
+                @Html.ValidationMessageFor(model => model.LegId)
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <input type="submit" value="Save" class="btn btn-primary"/>
+            @Html.ActionLink("Back to Homepage", "Index", null, new {@class = "btn btn-info"})
+        </div>
+    </fieldset>
+}
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

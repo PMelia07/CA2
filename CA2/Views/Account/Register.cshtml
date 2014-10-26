@@ -1,0 +1,40 @@
+﻿@model CA2.Models.RegisterModel
+@{
+    ViewBag.Title = "Register";
+}
+<div class="container-fluid">
+    <h1>@ViewBag.Title yourself using this form.</h1>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="alert-error">
+            @Html.ValidationSummary()
+        </div>
+        <fieldset>
+            <legend>Registration Form</legend>
+            <div class="row-fluid">
+                <div class="span2">
+                    @Html.LabelFor(m => m.UserName)
+                    @Html.TextBoxFor(m => m.UserName)
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span2">
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password)
+                </div>
+                <div class="span2 offset2">
+                    @Html.LabelFor(m => m.ConfirmPassword)
+                    @Html.PasswordFor(m => m.ConfirmPassword)
+                </div>
+            </div>
+            <div class="form-actions">
+                <input type="submit" value="Register" class="btn btn-success"/>
+            </div>
+        </fieldset>
+    }
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

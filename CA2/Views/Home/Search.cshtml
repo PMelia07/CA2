@@ -1,0 +1,70 @@
+﻿@model CA2.ViewModels.SearchCriteria
+@{
+    ViewBag.Title = "Ajax Search";
+}
+
+<h2>Search</h2>
+<fieldset id="search">
+    <legend>Search Criteria</legend>
+    <div>
+        <div class="searchOption">
+            @Html.LabelFor(model => model.GuestName)
+            @Html.EditorFor(model => model.GuestName)
+        </div>
+    </div>
+</fieldset>
+<div id="searchResults">
+    <!-- placeHolder for search results -->
+</div>
+<script type="text/javascript">
+
+    $(function () {
+
+        $("#waitImage").ajaxStart(function () {
+            $(this).show();
+        }).ajaxStop(function () {
+            $(this).hide();
+        });
+        $("#Search").click(function () {
+            var searchParameters = getSearchParameters();
+
+            var jsonData = JSON.stringify(searchParameters, null, 2);
+
+            $.ajax({
+                url: '@Url.Content("~/Home/Search/")',
+                type: 'POST',
+                data: jsonData,
+                datatype: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    $('#searchResults').replaceWith(data);
+                },
+                error: function (request, status, err) {
+                    alert(status);
+                    alert(err);
+                }
+            });
+
+            return false;
+        });
+        
+        function getSearchParameters() {
+            var title = $("#Trip").val();
+            var startCity = $("#StartCity").val();
+            var endCity = $("#EndCity").val();
+            var startDate = $("#StartDate").val();
+            var endDate = $("#EndDate").val();
+
+            if (formatId == undefined) formatId = 0;
+            if (subjectId == undefined) subjectId = 0;
+
+            return {
+                Title: title,
+                StartCity: startCity,
+                EndCity: endCity,
+                StartDate: startDate,
+                EndDate : endDate
+            };
+        }
+    });
+</script>

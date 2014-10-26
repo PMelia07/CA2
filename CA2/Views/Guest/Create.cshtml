@@ -1,0 +1,40 @@
+﻿@model CA2.Models.Guest
+
+@{
+    ViewBag.Title = "Create";
+}
+<div class="container-fluid">
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Guest</legend>
+
+        <div class="row-fluid">
+            <div class="span2">
+                @Html.LabelFor(model => model.Name)
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+            <div class="span2 offset2">
+                @Html.LabelFor(model => model.Legs)
+                @Html.DropDownList("Legs")
+                @Html.ValidationMessageFor(model => model.Legs)
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <input type="submit" value="Save" class="btn btn-primary"/>
+            @Html.ActionLink("Back to List of Guest", "Index", null, new {@class = "btn btn-info"})
+            @Html.ActionLink("Back to Homepage", "Index", "Home", null, new {@class = "btn"})
+        </div>
+    </fieldset>
+}
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

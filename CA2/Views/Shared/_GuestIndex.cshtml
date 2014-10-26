@@ -1,0 +1,34 @@
+﻿@using BootstrapSupport
+@*@model IEnumerable<CA2.Models.GuestViewModel>*@
+@model IEnumerable<CA2.Models.Guest>
+@{
+    Layout = "~/Views/shared/_Layout.cshtml";
+}
+<table class="table">
+
+    @foreach (var item in Model)
+    {
+        <tr class="table table-condensed">
+            <th>Options</th>
+            <th></th>
+            <th>Guest Name</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>
+                @Html.ActionLink("Deatils of this Leg", "Details", "Guest", new {id = item.GuestId}, new {@class = "btn-info btn-small"})
+                <br/>
+                @Html.ActionLink("Edit this Leg", "Edit", "Guest", new {id = item.GuestId}, new {@class = "btn-info btn-small"})
+                <br/>
+                @Html.ActionLink("Delete this Leg", "Delete", "Guest", new {id = item.GuestId}, new {@class = "btn-info btn-small"})
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GuestId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+        </tr>
+    }
+
+</table>

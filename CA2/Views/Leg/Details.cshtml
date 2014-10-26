@@ -1,0 +1,38 @@
+﻿@model CA2.Models.Leg
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="container-fluid">
+<h2>Details</h2>
+
+    <fieldset>
+        <legend>Leg</legend>
+        <br />
+        @Html.DisplayNameFor(model => model.StartLocation)
+        @Html.DisplayFor(model => model.StartLocation)
+        <br />
+        @Html.DisplayNameFor(model => model.EndLocation)
+        @Html.DisplayFor(model => model.EndLocation)
+        <br />
+        @Html.DisplayNameFor(model => model.StartCity)
+        @Html.DisplayFor(model => model.StartCity)
+        <br />
+        @Html.DisplayNameFor(model => model.EndCity)
+        @Html.DisplayFor(model => model.EndCity)
+        <br />
+        @Html.DisplayNameFor(model => model.StartDate)
+        @Html.DisplayFor(model => model.StartDate)
+        <br />
+        @Html.DisplayNameFor(model => model.EndDate)
+        @Html.DisplayFor(model => model.EndDate)
+        <br />
+        @Html.DisplayNameFor(model => model.TripId)
+        @Html.DisplayFor(model => model.Trip.Name)
+        <br />
+    </fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LegId }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Back to List", "Index", "Home", new{@class="btn btn-success"})
+</p>
+</div>

@@ -1,0 +1,15 @@
+﻿
+@if (Request.IsAuthenticated) {
+    <text>
+        Hello, @Html.ActionLink(User.Identity.Name, "Index", "Trip", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
+            @Html.AntiForgeryToken()
+            <a class="btn btn-info btn-small" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+        }
+    </text>
+}
+else 
+{
+    <li class="btn btn-primary" title="New User??">@Html.ActionLink("New User??", "Register", "Account", routeValues: null, htmlAttributes: new {id = "registerlink"})</li>
+    <li class="btn btn-primary" title="Already a User??">@Html.ActionLink("Already a User??", "Login", "Account", routeValues: null, htmlAttributes: new {id = "loginLink"})</li>
+}

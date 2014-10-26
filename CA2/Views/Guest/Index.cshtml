@@ -1,0 +1,47 @@
+﻿@using BootstrapSupport
+@model IEnumerable<CA2.Models.Guest>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="container-fluid">
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create",null, new{@class="btn btn-primary"})
+</p>
+<table class="table-striped">
+    <tr>
+        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+    </tr>
+
+    @foreach (var item in Model) 
+    {
+        <tr>
+            <td>
+                <div class="btn-group">
+                    <a class="btn btn-warning" data-toggle="dropdown" href="#"> 
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        @{
+                            @Html.TryPartial("_actions", item)
+                            <li>@Html.ActionLink("Edit", "Edit", new {id = item.GuestId})</li>
+                            <li>@Html.ActionLink("Details", "Details", new {id = item.GuestId})</li>
+                            <li class="divider"></li>
+                            <li>@Html.ActionLink("Delete", "Delete", new {id = item.GuestId})</li>
+                        }
+                    </ul>
+                </div>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+        </tr>
+    }
+
+</table>
+</div>

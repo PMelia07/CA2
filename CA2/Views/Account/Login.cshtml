@@ -1,0 +1,47 @@
+﻿@model CA2.Models.LoginModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+</hgroup>
+
+<div class="container-fluid">
+    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>Log in Form</legend>
+            <div class="row-fluid">
+                <div class="span2">
+                    @Html.LabelFor(m => m.UserName)
+                    @Html.TextBoxFor(m => m.UserName)
+                    @Html.ValidationMessageFor(m => m.UserName)
+                </div>
+                <div class="span2 offset2">
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password)
+                    @Html.ValidationMessageFor(m => m.Password)
+                </div>
+            </div>
+            <div class="row-fluid">
+                    @Html.CheckBoxFor(m => m.RememberMe)
+                    @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+            </div>
+            <div class="form-actions">
+                <input type="submit" value="Log in" class="btn btn-inverse"/>
+                <p class="divider"></p>
+                @Html.ActionLink("Recover", "ForgotPassword", null, new{@class="btn btn-info"}) if you forgot you password.
+                <p class="divider"></p>
+                @Html.ActionLink("Register", "Register", null, new{@class="btn btn-warning"}) if you don't have an account.
+            </div>
+        </fieldset>
+    }
+
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

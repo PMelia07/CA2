@@ -1,0 +1,52 @@
+﻿@model CA2.Models.Trip
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="container-fluid">
+    <h2>Details</h2>
+
+    <fieldset>
+        <legend>Trip</legend>
+        <div class="row-fluid">
+            <div class="span2">
+                @Html.HiddenFor(model => model.TripId)
+                @Html.LabelFor(model => model.Name)
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+            <div class="span2 offset2">
+                @Html.LabelFor(model => model.MinGuests)
+                @Html.EditorFor(model => model.MinGuests)
+                @Html.ValidationMessageFor(model => model.MinGuests)
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span2">
+                @Html.LabelFor(model => model.StartDate)
+                @Html.TextBoxFor(model => model.StartDate)
+                @Html.ValidationMessageFor(model => model.StartDate)
+            </div>
+            <div class="span2 offset2">
+                @Html.LabelFor(model => model.EndDate)
+                @Html.TextBoxFor(model => model.EndDate)
+                @Html.ValidationMessageFor(model => model.EndDate)
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span2">
+                @Html.DisplayNameFor(model => model.Viable)
+                @Html.DisplayFor(model => model.Viable)
+            </div>
+            <div class="span2 offset2">
+                @Html.DisplayNameFor(model => model.Complete)
+                @Html.DisplayFor(model => model.Complete)
+            </div>
+        </div>
+        <div class="form-actions">
+            @Html.ActionLink("Edit", "Edit", new {id = Model.TripId}, new{@class="btn btn-info"})
+            @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-inverse" })
+        </div>
+
+    </fieldset>
+</div>

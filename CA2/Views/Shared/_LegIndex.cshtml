@@ -1,0 +1,62 @@
+﻿@using BootstrapSupport
+@*@model IEnumerable<CA2.Models.LegViewModel>*@
+@model IEnumerable<CA2.Models.Leg>
+@{
+    Layout = "~/Views/shared/_Layout.cshtml";
+}
+<table>
+
+    @foreach (var item in Model)
+    {
+    <tr class="table table-condensed">
+        <th>Options</th>
+        <th>Legs Starting Location</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th></th>
+    </tr>
+    <tr>
+        <td>
+            @Html.ActionLink("Deatils of this Leg", "Details", "Leg", new {id = item.LegId}, new {@class = "btn-info btn-small"})
+            <br/>
+            @Html.ActionLink("Edit this Leg", "Edit", "Leg", new {id = item.LegId}, new {@class = "btn-info btn-small"})
+            <br/>
+            @Html.ActionLink("Delete this Leg", "Delete", "Leg", new {id = item.LegId}, new {@class = "btn-info btn-small"})
+                    
+            @*                    <div class="btn-group">
+                        <a class="btn-primary dropdown-toggle" data-toggle="dropdown" href="#"> 
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            @{
+                                @Html.TryPartial("_actions", item)
+                                <li>@Html.ActionLink("Edit", "Edit", "Leg", new {id = legs.LegId})</li>
+                                <li>@Html.ActionLink("Details", "Details", "Leg", new {id = legs.LegId})</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Delete", "Delete", "Leg", new {id = legs.LegId})</li>
+                            }
+                        </ul>
+                    </div>*@
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartLocation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndLocation)
+        </td>
+    </tr>
+    }
+</table>

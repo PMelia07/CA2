@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "ResetConfirmation";
+}
+
+<h2>ResetConfirmation</h2>
+
+@using (Html.BeginForm("ResetConfirmation", "Account", FormMethod.Post))
+{
+    <div class="field-editor">
+        @Html.TextBox("Password", "", new { id = "PasswordBox" })
+    </div>
+    @Html.Hidden("rt",(string) ViewBag.rt)
+    <input type="submit" value="Reset Password" />
+}

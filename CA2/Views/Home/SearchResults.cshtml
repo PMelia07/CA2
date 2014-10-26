@@ -1,0 +1,22 @@
+﻿@model IEnumerable<CA2.ViewModels.Result>
+<div id="searchResults">
+    <table class="table table-bordered">
+        <tr>
+            <th>Trip Name</th>
+            <th>Start City</th>
+            <th>End City</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.StartCity)</td>
+                <td>@Html.DisplayFor(modelItem => item.EndCity)</td>
+                <td>@Html.DisplayFor(modelItem => item.StartDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.EndDate)</td>
+            </tr>
+        }
+    </table>
+</div>

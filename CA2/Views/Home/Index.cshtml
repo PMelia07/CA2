@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="container-fluid">
+    <br/>
+    <h3>We suggest the following:</h3>
+    <section>
+        <p>
+            <h5>Welcome to the Tour Agency App</h5>
+            <p>
+                In this app you can create a trip along with a leg of a journey with guest on a certain leg (or legs).
+            </p>
+        </p>
+        <p>
+            <h5>Getting Started</h5>
+            <p>
+                Before you book a Trip, with legs and guests, you most register and login.
+                @Html.ActionLink("Register", "Register", "Account", null, new {@class = "btn btn-primary"})
+            </p>
+        </p>
+    </section>
+</div>

@@ -1,0 +1,83 @@
+﻿@model CA2.Models.Leg
+
+@{
+    ViewBag.Title = "Edit";
+}
+<div class="container-fluid">
+    <h2>Edit</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>Leg</legend>
+            <div class="row-fluid">
+                <div class="span2">
+                    @Html.HiddenFor(model => model.LegId)
+                    @Html.LabelFor(model => model.StartLocation)
+                    @Html.EditorFor(model => model.StartLocation)
+                    @Html.ValidationMessageFor(model => model.StartLocation)
+                </div>
+                <div class="span2 offset2">
+                    @Html.LabelFor(model => model.EndLocation)
+                    @Html.EditorFor(model => model.EndLocation)
+                    @Html.ValidationMessageFor(model => model.EndLocation)
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span2">
+                    @Html.LabelFor(model => model.StartCity)
+                    @Html.EditorFor(model => model.StartCity)
+                    @Html.ValidationMessageFor(model => model.StartCity)
+                </div>
+                <div class="span2 offset2">
+                    @Html.LabelFor(model => model.EndCity)
+                    @Html.EditorFor(model => model.EndCity)
+                    @Html.ValidationMessageFor(model => model.EndCity)
+                </div>
+                <div class="span2 offset3">
+                    @Html.LabelFor(model => model.TripId, "Trip")
+                    @Html.DropDownList("TripId", String.Empty)
+                    @Html.ValidationMessageFor(model => model.TripId)
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span2">
+                    @Html.LabelFor(model => model.StartDate)
+                    @Html.TextBoxFor(model => model.StartDate, new{@id="DobStart"})
+                    @Html.ValidationMessageFor(model => model.StartDate)
+                </div>
+                <div class="span2 offset2">
+                    @Html.LabelFor(model => model.EndDate)
+                    @Html.TextBoxFor(model => model.EndDate, new{@id="DobEnd"})
+                    @Html.ValidationMessageFor(model => model.EndDate)
+                </div>
+            </div>
+            <div class="form-actions">
+                <input type="submit" value="Save"  class="btn btn-success"/>
+                @Html.ActionLink("Back to Hommepage", "Index", "Home", new {@class = "btn btn-primary"})
+            </div>
+        </fieldset>
+    }
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#DobStart").datepicker({
+            });
+        });
+    </script>
+    
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#DobEnd").datepicker({
+                });
+            });
+    </script>
+}  
